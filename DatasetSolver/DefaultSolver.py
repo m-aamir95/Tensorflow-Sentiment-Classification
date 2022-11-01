@@ -20,8 +20,7 @@ class DefaultSolver():
     if it does not exist then it will create one
     Returns : the path of the `Dataset` directory
     '''
-
-    def _resolve_base_dir(self):
+    def _resolve__dataset_base_dir(self):
         dataset_dir_path = f"{os.getcwd()}/{self.__dataset_directory_to_create}"
         if not os.path.exists(dataset_dir_path):
             os.mkdir(dataset_dir_path)
