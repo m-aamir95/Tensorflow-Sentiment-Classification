@@ -1,4 +1,9 @@
-import torch
+import tensorflow as tf
 
+# Custom Imports
+from DatasetSolver.GoogleDrive import GoogleDriveSolver
 if __name__ == '__main__':
-    print("Hello Tensorflow")
+
+
+    datasetSolver = GoogleDriveSolver()
+    print(datasetSolver.resolve_dataset_dir())
