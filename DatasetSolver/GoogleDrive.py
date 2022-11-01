@@ -26,8 +26,8 @@ class GoogleDriveDatasetSolver(DefaultSolver):
     def resolve_dataset_dir(self):
         # Return the local mock dataset folder
         base_dir = super()._resolve__dataset_base_dir()
-        # if super()._check_for_local_execution_environment_file_exist():
-        # return base_dir
+        if super()._check_for_local_execution_environment_file_exist():
+            return base_dir
 
         # Cloud platform specific download mechanism
         for index, google_drive_public_link in enumerate(self.google_drive_public_links):
