@@ -6,15 +6,17 @@ location could be either local or could be coming from a cloud source
 from DatasetSolver.DefaultSolver import DefaultSolver
 
 
-class GoogleDriveSolver(DefaultSolver):
-    """
-        use_local_mock_dataset, will resolve for local dataset folder is True, default True
-    """
-
-    def __init__(self, use_local_mock_dataset=True):
+class GoogleDriveDatasetSolver(DefaultSolver):
+    def __init__(self):
         super().__init__()
-        print("Google Drive Solver Initialized")
+
+    """
+    :returns Absolute Path where the dataset resides
+    """
 
     def resolve_dataset_dir(self):
-        return super()._resolve_base_dir()
+        # Return the local mock dataset folder
+        if super()._check_for_local_execution_environment_file_exist():
+            return super()._resolve_base_dir()
 
+        # Cloud platform specific download mechanism

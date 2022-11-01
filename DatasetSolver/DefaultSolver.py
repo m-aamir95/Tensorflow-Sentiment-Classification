@@ -10,7 +10,9 @@ from abc import ABC, abstractmethod
 class DefaultSolver():
 
     def __init__(self):
+
         self.__dataset_directory_to_create = "Dataset"
+        self.__file_to_decide_local_execution_environment = "execution_context_local.txt"
 
     # Core functionality
     '''
@@ -25,6 +27,14 @@ class DefaultSolver():
             os.mkdir(dataset_dir_path)
 
         return dataset_dir_path
+
+    """
+    Queries for a specific file called execution_context_local.txt [It will be excluded using .gitignore, so won't be part of remote deployment]
+    if the said file exists then the execution environment will be local else will resolve to provided cloud directory structure
+    :return boolean, True incase of file existence else False
+    """
+    def _check_for_local_execution_environment_file_exist(self):
+        return os.path.exists(os.getcwd() + '/' + self.__file_to_decide_local_execution_environment)
 
     # Abstract Methods
     @abstractmethod
