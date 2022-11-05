@@ -18,7 +18,7 @@ if __name__ == '__main__':
     # Sometimes tokenization and encoding all the word might not improve the accuracy much
     # But can badly effect the training performance because of more computation needed
     # Tokenizer class will also kind of normalize the text e.g removing punctuation, lowercase handling etc.
-    tokenizer = Tokenizer(num_words=100, oov_token="<OOV>")
+    tokenizer = Tokenizer(oov_token="<OOV>")
     tokenizer.fit_on_texts(article_headlines)
 
     # Generating text to sequence on the fit tokenizer
